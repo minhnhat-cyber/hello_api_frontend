@@ -1,14 +1,16 @@
-import { HashRouter, Route, Routes } from "react-router-dom";
-import TestApi from "./TestApi";
+import { HashRouter, Navigate, Route, Routes } from "react-router-dom";
+import Home from "./Home";
+import Item from "./Item";
 
-function App() {
+export default function App() {
   return (
     <HashRouter>
       <Routes>
-        <Route path="/test_api" element={<TestApi />} />
+        <Route path="/" element={<Home />}>
+          <Route index element={<Navigate to="item" replace />} />
+          <Route path="item" element={<Item />} />
+        </Route>
       </Routes>
     </HashRouter>
   );
 }
-
-export default App;

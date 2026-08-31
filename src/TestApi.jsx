@@ -10,7 +10,8 @@ function TestApi() {
   }
 
   useEffect(() => {
-    fetchData();
+    const timeoutId = window.setTimeout(fetchData, 0);
+    return () => window.clearTimeout(timeoutId);
   }, []);
 
   return (
